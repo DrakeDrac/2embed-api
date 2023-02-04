@@ -56,6 +56,7 @@ function rabbitstreamExtract(url) {
             try { // Dokicloud
                 let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/consumet/rapidclown/dokicloud/key.txt')).data;
                 let bytes = crypto_js_1.default.AES.decrypt(encryptedSource, decryptionKey);
+                console.log(encryptedSource+" " +decryptionKey);
                 return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
             }
             catch (e) {
@@ -64,6 +65,7 @@ function rabbitstreamExtract(url) {
             try { // Rabbitstream
                 let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/enimax-anime/key/e6/key.txt')).data;
                 let bytes = crypto_js_1.default.AES.decrypt(encryptedSource, decryptionKey);
+                console.log(decryptionKey);
                 return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
             }
             catch (e) {
