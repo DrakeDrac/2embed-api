@@ -2,10 +2,9 @@
   "name": "2embed-api",
   "version": "1.0.0",
   "description": "api",
-  "main": "dist/server.js",
+  "main": "server.js",
   "scripts": {
-    "build": "tsc",
-    "start": "tsc && node dist/server.js",
+    "start": "node server.js",
     "lint": "eslint . --ext .ts",
     "dev": "start http://localhost:8080/ && npx nodemon"
   },
