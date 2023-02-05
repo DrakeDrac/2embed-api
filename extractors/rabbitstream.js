@@ -60,7 +60,7 @@ function rabbitstreamExtract(url) {
                 return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
             }
             catch (e) {
-                console.log("Dokicloud key failed to decrypt source "+e.message);
+                console.log("0 key failed to decrypt source "+e.message);
             }
             try { // Dokicloud
                 let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/consumet/rapidclown/dokicloud/key.txt')).data;
@@ -69,7 +69,7 @@ function rabbitstreamExtract(url) {
                 return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
             }
             catch (e) {
-                console.log("Dokicloud key failed to decrypt source "+e.message);
+                console.log("1 key failed to decrypt source "+e.message);
             }
                         try { // Rabbitstream
                 let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/enimax-anime/key/e6/key.txt')).data;
@@ -78,7 +78,7 @@ function rabbitstreamExtract(url) {
                 return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
             }
             catch (e) {
-                console.log("Rabbitstream key failed to decrypt source "+e.message);
+                console.log("2 key failed to decrypt source "+e.message);
             }
             try { // Dokicloud
                 let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/consumet/rapidclown/rabbitstream/key.txt')).data;
@@ -87,7 +87,7 @@ function rabbitstreamExtract(url) {
                 return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
             }
             catch (e) {
-                console.log("Dokicloud key failed to decrypt source "+e.message);
+                console.log("3 key failed to decrypt source "+e.message);
             }
         });
         data.sources = yield decryptSource(data.sources);
