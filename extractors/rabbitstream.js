@@ -52,11 +52,20 @@ function rabbitstreamExtract(url) {
                 "X-Requested-With": "XMLHttpRequest"
             } }).then(res => res.data);
         const decryptSource = (encryptedSource) => __awaiter(this, void 0, void 0, function* () {
-            // There are 2 keys possible, just try them all
+            // There are 3-4 keys possible, just try them all
+                        try { // Dokicloud
+                let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/consumet/rapidclown/main/key.txt')).data;
+                let bytes = crypto_js_1.default.AES.decrypt(encryptedSource, decryptionKey);
+                console.log(decryptionKey+" 0");
+                return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
+            }
+            catch (e) {
+                console.log("Dokicloud key failed to decrypt source "+e.message);
+            }
             try { // Dokicloud
                 let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/consumet/rapidclown/dokicloud/key.txt')).data;
                 let bytes = crypto_js_1.default.AES.decrypt(encryptedSource, decryptionKey);
-                console.log(encryptedSource+" " +decryptionKey);
+                console.log(decryptionKey+" 1");
                 return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
             }
             catch (e) {
@@ -65,7 +74,7 @@ function rabbitstreamExtract(url) {
                         try { // Rabbitstream
                 let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/enimax-anime/key/e6/key.txt')).data;
                 let bytes = crypto_js_1.default.AES.decrypt(encryptedSource, decryptionKey);
-                console.log(decryptionKey);
+                console.log(decryptionKey+" 2");
                 return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
             }
             catch (e) {
@@ -74,16 +83,7 @@ function rabbitstreamExtract(url) {
             try { // Dokicloud
                 let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/consumet/rapidclown/rabbitstream/key.txt')).data;
                 let bytes = crypto_js_1.default.AES.decrypt(encryptedSource, decryptionKey);
-                console.log(decryptionKey);
-                return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
-            }
-            catch (e) {
-                console.log("Dokicloud key failed to decrypt source "+e.message);
-            }
-            try { // Dokicloud
-                let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/consumet/rapidclown/main/key.txt')).data;
-                let bytes = crypto_js_1.default.AES.decrypt(encryptedSource, decryptionKey);
-                console.log(decryptionKey);
+                console.log(decryptionKey+" 3");
                 return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
             }
             catch (e) {
