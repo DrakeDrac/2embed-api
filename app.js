@@ -17,7 +17,7 @@ class App {
     }).middleware;
     this.app = (0, express_1.default)();
     this.app.use((0, cors_1.default)({ origin: true }));
-    this.app.use(this.cache("5 seconds"));
+    //this.app.use(this.cache("5 seconds"));
     this.routes();
   }
   listen() {
