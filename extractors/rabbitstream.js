@@ -54,7 +54,7 @@ function rabbitstreamExtract(url) {
         const decryptSource = (encryptedSource) => __awaiter(this, void 0, void 0, function* () {
             // There are 3-4 keys possible, just try them all
                         try { // Dokicloud
-                let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/consumet/rapidclown/rabbitstream/key.txt')).data;
+                let decryptionKey = (yield axios_1.default.get('https://raw.githubusercontent.com/enimax-anime/key/e4/key.txt')).data;
                 let bytes = crypto_js_1.default.AES.decrypt(encryptedSource, decryptionKey);
                 console.log(decryptionKey+" 3");
                 return (JSON.parse(bytes.toString(crypto_js_1.default.enc.Utf8)));
